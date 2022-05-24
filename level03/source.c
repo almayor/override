@@ -1,66 +1,32 @@
-"\nInvalid Password"
-"/bin/sh"
-"Congratulations!"
-
-"%d"
-"%u"
-
 #include <time.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void test(uint arg1, uint arg2) {
-	uint res = arg2 - arg1;
-	switch (res) {
-		case 0x1:
-			decrypt(res);
-			break;
-		case 0x2:
-			decrypt(res);
-			break;
-		case 0x3:
-			decrypt(res);
-			break;
-		case 0x4:
-			decrypt(res);
-			break;
-		case 0x5:
-			decrypt(res);
-			break;
-		case 0x6:
-			decrypt(res);
-			break;
-		case 0x7:
-			decrypt(res);
-			break;
-		case 0x8:
-			decrypt(res);
-			break;
-		case 0x9:
-			decrypt(res);
-			break;
-		case 0x10:
-			decrypt(res);
-			break;
-		case 0x11:
-			decrypt(res);
-			break;
-		case 0x12:
-			decrypt(res);
-			break;
-		case 0x13:
-			decrypt(res);
-			break;
-		case 0x14:
-			decrypt(res);
-			break;
-		case 0x15:
-			decrypt(res);
-			break;
-		default:
-			decrypt(rand());
-			break;
+void decrypt(char arg) {
+	char buffer[] = "Q}|u`sfg~sf{}|a3";
+
+	size_t len = strlen(s1);
+	for (size_t i = 0; i < len; ++i) {
+		buffer[i] = buffer[i] ^ arg;
+	}
+	if (!strncmp("Congratulations!", buffer, 17)) {
+		system("/bin/sh");
+	} else {
+		puts("\nInvalid Password");
+	}
+}
+
+void test(int arg1, int arg2) {
+	int res = arg2 - arg1;
+
+	// this was originally written as a switch statement
+	if ((res >= 0x01 && res <= 0x09) ||
+		(res >= 0x10 && res <= 0x15)) {
+		decrypt(res);
+	} else
+	{
+		decrypt(rand());
 	}
 }
 
@@ -73,8 +39,8 @@ int main() {
 	puts("***********************************");
 
 	printf("Password:");
-	scanf("%d", val);
-	test(val, 0x1337d00d);
+	scanf("%d", &val);
+	test(0x1337d00d - val); // 322424845
 
 	return 0;
 }
