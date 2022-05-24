@@ -40,7 +40,7 @@ int main() {
 
 	printf("Password:");
 	scanf("%d", &val);
-	test(0x1337d00d - val); // 322424845
+	test(val, 0x1337d00d); // 322424845
 
 	return 0;
 }
