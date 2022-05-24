@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -5,6 +6,7 @@ int main() {
 	char username[96]; // at rbp - 0x70
 	char password[96]; // at rbp - 0x110
 	char token[41]; // at rbp - 0xa0
+	size_t linespan;
 
 	memset(username, 0, 96); // at rbp - 0x70
 	memset(password, 0, 96); // at rbp - 0x110
@@ -17,7 +19,7 @@ int main() {
 	}
 
 	fread(token, 1, 41, file); // reads to rbp - 0xa0
-	size_t linespan = strcspn(token, "\n");
+	linespan = strcspn(token, "\n");
 	if (linespan != 41) {
 		fwrite("ERROR: failed to read password file\n", 1, 0x24, stderr);
 		fwrite("ERROR: failed to read password file\n", 1, 0x24, stderr);
@@ -32,12 +34,12 @@ int main() {
 	
 	printf("--[ Username: ");
 	fgets(username, 100, stdin); // writes to rbp - 0x70
-	size_t linespan = strcspn(username, "\n");
+	linespan = strcspn(username, "\n");
 	username[linespan] = 0;
 
 	printf("--[ Password: ");
 	fgets(password, 100, stdin); // writes to rbp - 0x110
-	size_t linespan = strcspn(password, "\n");
+	linespan = strcspn(password, "\n");
 	password[linespan] = 0;
 
 	puts("*****************************************");
