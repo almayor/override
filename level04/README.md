@@ -10,8 +10,8 @@
 
 ```
 > gdb level04
-$ set follow-fork-mode child
-$ run
+(gdb) set follow-fork-mode child
+(gdb) run
 Starting program: /home/users/level04/level04 
 [New process 8570]
 Give me some shellcode, k
