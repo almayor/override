@@ -19,7 +19,7 @@ int main()
 		prctl(PR_SET_PDEATHSIG, SIGHUP);
 		ptrace(PT_TRACE_ME, 0, 0, 0);
 		puts("Give me some shellcode, k");
-		gets(buf);
+		gets(buf); // VULNERABILITY
 		return 0;
 	}
 
