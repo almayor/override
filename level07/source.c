@@ -29,7 +29,7 @@ int read_number(unsigned int *arr)
 
   printf(" Index: ");
   i = get_unum();
-  printf(" Number at data[%u] is %u\n", i, *(i * 4 + arr));
+  printf(" Number at data[%u] is %u\n", i, arr(i * 4));
   return 0;
 }
 
@@ -43,6 +43,7 @@ int store_number(unsigned int *arr)
   value = get_unum();
   printf(" Index: ");
   i = get_unum();
+
   if ((i % 3 == 0) || (value >> 0x18 == 0xb7))
   {
     puts(" *** ERROR! ***");
@@ -52,7 +53,7 @@ int store_number(unsigned int *arr)
   }
   else
   {
-    *(i * 4 + arr) = value;
+    arr[i * 4] = value;
     ret = 0;
   }
   return ret;
@@ -62,7 +63,7 @@ int main(int argc, char **argv, char **env)
 {
   char          cmd[20];
   int           ret;
-  unsigned int  arr[100];
+  char          arr[100];
 
   while (*argv)
   {
@@ -77,14 +78,14 @@ int main(int argc, char **argv, char **env)
   }
 
   puts("----------------------------------------------------\n"
-       "  Welcome to wil\'s crappy numberstorage service!   \n"
+       "  Welcome to wil\'s crappy numbersstorage service!  \n"
        "----------------------------------------------------\n"
        " Commands:                                          \n"
        "    store - store a number into the data storage    \n"
-       "   read  - read a number from the data storage      \n"
+       "    read  - read a number from the data storage     \n"
        "    quit  - exit the program                        \n"
        "----------------------------------------------------\n"
-       "   wil has reserved somestorage :>                  \n"
+       "   wil has reserved some storage :>                 \n"
        "----------------------------------------------------\n"
       );
   do
@@ -93,11 +94,11 @@ int main(int argc, char **argv, char **env)
     ret = 1;
 
     fgets(cmd, 0x14, stdin);
-    if (cmd == "store")
+    if (!strcmp(cmd, "store"))
       ret = store_number(arr);
-    else if (cmd == "read")
+    else if (!strcmp(cmd, "read"))
       ret = read_number(arr);
-    else if (cmd == "quit")
+    else if (!strcmp(cmd, "quit"))
       return 0;
 
     if (ret)
