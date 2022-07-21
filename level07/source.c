@@ -61,10 +61,11 @@ int store_number(unsigned int *arr)
 
 int main(int argc, char **argv, char **env)
 {
-  char          cmd[20];
+  // we have 528 bytes before esp and stored eip
+  char          cmd[20]; // esp + 0x1b8
   int           ret;
-  char          arr[100];
-
+  char          arr[400]; // esp + 0x24
+  
   while (*argv)
   {
     memset(*argv, 0, strlen(*argv));
