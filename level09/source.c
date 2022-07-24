@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct msg
+typedef struct msg
 {
     char text[140];
     char user[40];
@@ -18,7 +18,7 @@ void    secret_backdoor()
 
 void set_username(msg_t *msg)
 {
-    char buf[128];
+    char    buf[128];
     puts(">: Enter your username");
     printf(">>: ");
     fgets(buf, 128, stdin);
@@ -29,7 +29,7 @@ void set_username(msg_t *msg)
 
 void set_msg(msg_t *msg)
 {
-    char buf[1024];
+    char    buf[1024];
 
     puts("Message @Unix-Dude");
     printf(">>: ");
@@ -39,6 +39,8 @@ void set_msg(msg_t *msg)
 
 void handle_msg()
 {
+    // msg.text at $rsp + 0x8c
+    // msg.len at $rbp - 0xc
     msg_t msg = {.text = {}, .len = 140};
     set_username(&msg);
     set_msg(&msg);

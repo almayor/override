@@ -61,7 +61,6 @@ int store_number(unsigned int *arr)
 
 int main(int argc, char **argv, char **env)
 {
-  // we have 528 bytes before esp and stored eip
   char          cmd[20]; // esp + 0x1b8
   int           ret;
   char          arr[400]; // esp + 0x24

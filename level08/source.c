@@ -46,6 +46,7 @@ int main(int argc, char *argv[]) {
 	char c; //at rbp-0x71
 	do {
 		c = fgets(file);
+		write(fid, &c, 1);
 	} while (c != EOF);
 	log_wrapper(log, "Finished back up ", argv[1]);
 
