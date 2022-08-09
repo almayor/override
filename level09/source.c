@@ -39,8 +39,7 @@ void set_msg(msg_t *msg)
 
 void handle_msg()
 {
-    // msg.text at $rsp + 0x8c
-    // msg.len at $rbp - 0xc
+    // msg is at $rbp - 0xc0
     msg_t msg = {.text = {}, .len = 140};
     set_username(&msg);
     set_msg(&msg);
