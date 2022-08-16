@@ -6,7 +6,7 @@
 void decrypt(char arg) {
 	char buffer[] = "Q}|u`sfg~sf{}|a3";
 
-	size_t len = strlen(s1);
+	size_t len = strlen(buffer);
 	for (size_t i = 0; i < len; ++i) {
 		buffer[i] = buffer[i] ^ arg;
 	}

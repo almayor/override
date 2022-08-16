@@ -1,7 +1,9 @@
+// Note that this file will not compile on MacOS as it doesn't provide `prctl`
+
 #include <unistd.h>
 #include <stdio.h>
-#include <linux/prctl.h>
 #include <signal.h>
+#include <sys/prctl.h>
 #include <sys/types.h>
 #include <sys/ptrace.h>
 
