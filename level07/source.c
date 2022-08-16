@@ -1,6 +1,6 @@
 #include <string.h>
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 
 void clear_stdin(void)
 {
@@ -29,7 +29,7 @@ int read_number(unsigned int *arr)
 
   printf(" Index: ");
   i = get_unum();
-  printf(" Number at data[%u] is %u\n", i, arr(i * 4));
+  printf(" Number at data[%u] is %u\n", i, arr[i * 4]);
   return 0;
 }
 
