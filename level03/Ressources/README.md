@@ -14,4 +14,4 @@ level03: setuid setgid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV),
 
 Функция-прослойка `test` перенаправляет неизмененными только значения в диапазонах `0x1-0x9` и `0x10-0x15`. ~~Значит, мы не можем установить значение аргумента равным 12.~~
 
-Следовательно, пароль равен `0x1337d00d + 18 = 322424863`, а токен – `kgv3tkEb9h2mLkRsPkXRfc2mHbjMxQzvb2FrgKkf`.
+Следовательно, пароль равен `0x1337d00d - 18 = 322424827`, а токен – `kgv3tkEb9h2mLkRsPkXRfc2mHbjMxQzvb2FrgKkf`.
